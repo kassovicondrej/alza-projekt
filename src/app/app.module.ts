@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
-import { AppComponent } from './app.component';
-import { TestComponent } from './core/test/test.component'
+import { AppComponent } from './app.component'
+import { AppRoutingModule } from './app-routing.module'
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { HeroesComponent } from './heroes/heroes.component'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
-  declarations: [AppComponent, TestComponent],
-  imports: [BrowserModule],
+  declarations: [AppComponent, DashboardComponent, HeroesComponent],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
