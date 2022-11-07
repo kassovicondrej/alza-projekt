@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { HeroesComponent } from './heroes/heroes.component'
 import { FormsModule } from '@angular/forms'
+import { MyRedDirective } from './core/directives/my-red'
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, HeroesComponent],
+  declarations: [AppComponent, DashboardComponent, HeroesComponent, MyRedDirective],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
