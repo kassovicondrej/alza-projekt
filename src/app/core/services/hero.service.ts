@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 
 import { BehaviorSubject, Observable, of } from 'rxjs'
-import { MessageService } from './message.service'
 import { Hero } from '../interfaces/hero'
 import { HEROES } from '../mock/mock-heroes'
 
@@ -10,7 +9,7 @@ export class HeroService {
   private heroes$: Observable<Hero[]>
   private _heroes$ = new BehaviorSubject<Array<Hero>>([])
 
-  constructor(private messageService: MessageService) {
+  constructor() {
     this.heroes$ = of(HEROES)
     this._heroes$.next(HEROES)
   }
@@ -25,7 +24,6 @@ export class HeroService {
 
   getHero(id: number): Observable<Hero> {
     const hero = HEROES.find((h) => h.id === id)!
-    this.messageService.add(`HeroService: fetched hero id=${id}`)
     return of(hero)
   }
 

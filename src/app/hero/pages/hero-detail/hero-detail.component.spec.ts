@@ -59,7 +59,7 @@ describe('HeroDetailComponent', () => {
   })
   describe('Hero exist', () => {
     beforeEach(() => {
-      const heroServiceStub = TestBed.get(HeroService)
+      const heroServiceStub = TestBed.inject(HeroService)
       spyOn(heroServiceStub, 'getHero').and.returnValue(
         of({
           id: 13,
