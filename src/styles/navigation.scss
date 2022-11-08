@@ -1,0 +1,26 @@
+nav {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  padding: .5rem;
+}
+
+nav a {
+  display: inline-flex;
+  padding: 1rem;
+  border-radius: .25rem;
+  text-decoration: none;
+  background-color: $light-gray;
+  color: $primary-color;
+}
+
+nav a:hover:not(.active) {
+  @include box-shadow;
+  background-color: $primary-color-dark;
+  color: $light-gray;
+}
+
+nav .active {
+  background-color: $primary-color;
+  color: $light-gray;
+}

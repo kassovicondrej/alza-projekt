@@ -21,11 +21,13 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().subscribe((heroes: Hero[]) => (this.heroes = heroes))
   }
 
-  deleteHero(hero: Hero): void {
+  deleteHero(event: Event, hero: Hero): void {
+    event.preventDefault()
     this.heroService.deleteHero(hero.id)
   }
 
   addHero() {
     this.heroService.addHero(this.heroName)
+    this.heroName = ''
   }
 }

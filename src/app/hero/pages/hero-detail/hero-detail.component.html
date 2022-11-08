@@ -1,9 +1,23 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
+<div *ngIf="hero" class="flex justify-content-center mt-2">
+  <div class="card">
+    <div class="card-title">{{ hero.name | uppercase }} Details</div>
+
+    <div class="card-body">
+      <div class="form-group">
+        <label>ID</label>
+        <input type="text" [(ngModel)]="hero.id" disabled placeholder="Hero id" />
+      </div>
+
+      <div class="form-group">
+        <label>Hero name:</label>
+        <input type="text" [(ngModel)]="hero.name" placeholder="Hero name" />
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <button class="btn btn-primary grow" type="button" (click)="goBack()">
+        {{ "Save and go back" | uppercase }}
+      </button>
+    </div>
   </div>
-  <button type="button" (click)="goBack()">save and go back</button>
 </div>

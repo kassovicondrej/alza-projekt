@@ -1,6 +1,12 @@
-<h1>{{title}}</h1>
+<div class="navbar">{{ title }}</div>
 <nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/heroes">Heroes</a>
+  <a
+    (click)="onLinkClick(link.address)"
+    *ngFor="let link of links"
+    [ngClass]="{ active: active === link.address }"
+    [routerLink]="link.address"
+  >
+    {{ link.title }}
+  </a>
 </nav>
 <router-outlet></router-outlet>

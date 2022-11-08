@@ -1,14 +1,31 @@
-<h2>My Heroes</h2>
-<div>
-  <label for="hero-name">Add new hero: </label>
-  <input id="hero-name" [(ngModel)]="heroName" placeholder="Hero name"/>
-  <button (click)="addHero()">Add Hero</button>
+<div class="flex flex-column justify-content-center mt-2">
+  <div class="card align-self-center">
+    <div class="card-title">Add new hero</div>
+
+    <div class="card-body">
+      <div class="form-group">
+        <label>Hero name</label>
+        <input [(ngModel)]="heroName" placeholder="Hero name" type="text" />
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <button (click)="addHero()" class="btn btn-primary grow" type="button">
+        {{ "Add hero" | uppercase }}
+      </button>
+    </div>
+  </div>
+
+  <div class="flex flex-column align-self-center m-2">
+    <div class="text-title mx-4">My heroes</div>
+    <div class="flex flex-column">
+      <div *ngFor="let hero of heroes" class="hero-badge" routerLink="/detail/{{ hero.id }}">
+        <div class="hero-badge__id">{{ hero.id }}</div>
+        <div class="hero-badge__name">
+          <span [value]="hero.name" customText>{{ hero.name }}</span>
+          <span (click)="deleteHero($event, hero)" class="delete-icon">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}" customText [value]="hero.name">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-      <button (click)="deleteHero(hero)">Delete</button>
-  </li>
-</ul>

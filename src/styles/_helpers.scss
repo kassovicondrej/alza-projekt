@@ -1,0 +1,44 @@
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.text-title {
+  font-size: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.mt-2 {
+  margin-top: .5rem;
+}
+
+.mb-2 {
+  margin-bottom: .5rem;
+}
+
+.mx-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

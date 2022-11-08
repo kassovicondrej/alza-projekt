@@ -1,0 +1,23 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    padding: 0.25rem 0;
+  }
+
+  input {
+    border: 1px solid $light-gray;
+    border-radius: .25rem;
+    outline: none;
+    padding: .5rem;
+  }
+
+  input:focus {
+    outline: .1rem solid $primary-color;
+  }
+}
