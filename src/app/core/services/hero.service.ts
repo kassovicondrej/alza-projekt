@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 
-import { BehaviorSubject, Observable, of, Subscription } from 'rxjs'
+import { BehaviorSubject, Observable, of } from 'rxjs'
 import { Hero } from '../interfaces/hero'
 import { HEROES } from '../mock/mock-heroes'
 

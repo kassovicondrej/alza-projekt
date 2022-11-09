@@ -4,8 +4,8 @@ import { HeroService } from '../core/services/hero.service'
 import { MatDialog } from '@angular/material/dialog'
 import { CreateUserModalComponent } from '../core/components/create-user-modal/create-user-modal.component'
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { ConfirmDialogModel } from '../core/interfaces/confirm-dialog-model'
 import { ConfirmDialogComponent } from '../core/components/confirm-dialog/confirm-dialog.component'
+import { ConfirmDialog } from '../core/interfaces/confirm-dialog'
 
 @Component({
   selector: 'app-heroes-list',
@@ -30,7 +30,6 @@ export class HeroesListComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe((newName) => {
-      console.log('The dialog was closed', newName)
       if (newName) {
         this.heroService.addHero(newName)
         this.snackBar.open('Hero created!', 'Undo', { duration: 3000 })
@@ -43,9 +42,9 @@ export class HeroesListComponent implements OnInit {
   }
 
   deleteHero(event: Event, hero: Hero): void {
-    const message = `Are you sure you want to do this?`
+    const message = `Are you sure you want delete hero?`
 
-    const dialogData = new ConfirmDialogModel('Confirm Action', message)
+    const dialogData = new ConfirmDialog('Delete hero', message)
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '400px',
