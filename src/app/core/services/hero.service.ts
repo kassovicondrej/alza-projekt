@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core'
 
-import { BehaviorSubject, Observable, of } from 'rxjs'
+import { BehaviorSubject, Observable, of, Subscription } from 'rxjs'
 import { Hero } from '../interfaces/hero'
 import { HEROES } from '../mock/mock-heroes'
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
-  private heroes$: Observable<Hero[]>
   private _heroes$ = new BehaviorSubject<Array<Hero>>([])
 
   constructor() {
-    this.heroes$ = of(HEROES)
     this._heroes$.next(HEROES)
   }
 

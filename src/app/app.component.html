@@ -1,9 +1,8 @@
 <div class="navbar">{{ title }}</div>
 <nav>
   <a
-    (click)="onLinkClick(link.address)"
     *ngFor="let link of links"
-    [ngClass]="{ active: active === link.address }"
+    [routerLinkActive]="active"
     [routerLink]="link.address"
   >
     {{ link.title }}

@@ -19,7 +19,7 @@
   <div class="flex flex-column align-self-center m-2">
     <div class="text-title mx-4">My heroes</div>
     <div class="flex flex-column">
-      <div *ngFor="let hero of heroes" class="hero-badge" routerLink="/detail/{{ hero.id }}">
+      <div *ngFor="let hero of heroes" class="hero-badge" [routerLink]="['/detail/', hero.id]">
         <div class="hero-badge__id">{{ hero.id }}</div>
         <div class="hero-badge__name">
           <span [value]="hero.name" customText>{{ hero.name }}</span>

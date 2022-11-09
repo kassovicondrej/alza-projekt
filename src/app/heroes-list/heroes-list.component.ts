@@ -3,11 +3,10 @@ import { Hero } from '../core/interfaces/hero'
 import { HeroService } from '../core/services/hero.service'
 
 @Component({
-  selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss'],
+  selector: 'app-heroes-list',
+  templateUrl: './heroes-list.component.html',
 })
-export class HeroesComponent implements OnInit {
+export class HeroesListComponent implements OnInit {
   heroes: Hero[] = []
   heroName: string = ''
 
@@ -22,7 +21,6 @@ export class HeroesComponent implements OnInit {
   }
 
   deleteHero(event: Event, hero: Hero): void {
-    event.preventDefault()
     this.heroService.deleteHero(hero.id)
   }
 
