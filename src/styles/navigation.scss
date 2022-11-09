@@ -10,17 +10,17 @@ nav a {
   padding: 1rem;
   border-radius: .25rem;
   text-decoration: none;
-  background-color: $light-gray;
+  background-color: $button-background-color;
   color: $primary-color;
 }
 
 nav a:hover:not(.active) {
   @include box-shadow;
   background-color: $primary-color-dark;
-  color: $light-gray;
+  color: $button-background-color;
 }
 
 nav .active {
   background-color: $primary-color;
-  color: $light-gray;
+  color: $button-background-color;
 }
