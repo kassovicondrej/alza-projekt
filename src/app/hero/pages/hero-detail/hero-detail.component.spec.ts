@@ -60,19 +60,31 @@ describe('HeroDetailComponent', () => {
     })
   })
   describe('Hero exist', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
+      const heroServiceStub = TestBed.inject(HeroService)
+      spyOn(heroServiceStub, 'getHero').and.returnValue(
+        of({
+          id: 13,
+          name: 'Bombasto',
+        }),
+      )
       fixture.detectChanges()
+
+      await fixture.detectChanges()
     })
+
     it('Empty Hero', () => {
       const anyDiv = fixture.debugElement.query(By.css('div'))
       expect(anyDiv).toBeTruthy()
     })
+
     it('should check input label name', () => {
       let queryByLabel = fixture.debugElement.query(By.css('label[for=id]'))
       expect(queryByLabel).toBeTruthy()
       expect(queryByLabel.nativeElement).toBeTruthy()
       expect(queryByLabel.nativeElement.outerText).toContain('ID')
     })
+
     it('Set Input id', async () => {
       const username = fixture.debugElement.query(By.css('#id'))
       username.nativeElement.value = 13
@@ -80,12 +92,23 @@ describe('HeroDetailComponent', () => {
       fixture.detectChanges()
       expect(username.nativeElement.value).toContain(13)
     })
+
     it('Set Input name', async () => {
       const username = fixture.debugElement.query(By.css('#name'))
       username.nativeElement.value = 'Bombasto'
       username.nativeElement.dispatchEvent(new Event('input'))
       fixture.detectChanges()
       expect(username.nativeElement.value).toContain('Bombasto')
+    })
+
+    it('Initialized with a hero and show context', () => {
+      const anyDiv = fixture.debugElement.query(By.css('div'))
+      expect(anyDiv).toBeTruthy()
+    })
+
+    it('Contains hero id', () => {
+      const input: HTMLInputElement = fixture.debugElement.query(By.css('#id')).nativeElement
+      expect(input.value).toContain('13')
     })
   })
 })
