@@ -30,7 +30,7 @@ export class HeroService {
   addHero(newHeroName: string): void {
     const currentHeroes = this._heroes$.getValue()
     currentHeroes.push(<Hero>{
-      id: Math.max(...currentHeroes.map((o) => o.id)) + 1,
+      id: currentHeroes.length === 0 ? 1 : Math.max(...currentHeroes.map((o) => o.id)) + 1,
       name: newHeroName,
     })
     this._heroes$.next(currentHeroes)

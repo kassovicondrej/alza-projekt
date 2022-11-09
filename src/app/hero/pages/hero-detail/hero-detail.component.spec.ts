@@ -5,6 +5,7 @@ import { HeroService } from '../../../core/services/hero.service'
 import { ActivatedRoute } from '@angular/router'
 import { of } from 'rxjs'
 import { By } from '@angular/platform-browser'
+import { FormsModule } from '@angular/forms'
 
 describe('HeroDetailComponent', () => {
   let component: HeroDetailComponent
@@ -26,6 +27,7 @@ describe('HeroDetailComponent', () => {
         { provide: Location, useFactory: locationStub },
         { provide: HeroService, useFactory: heroServiceStub },
       ],
+      imports: [FormsModule],
     })
     fixture = TestBed.createComponent(HeroDetailComponent)
     component = fixture.componentInstance
@@ -59,22 +61,31 @@ describe('HeroDetailComponent', () => {
   })
   describe('Hero exist', () => {
     beforeEach(() => {
-      const heroServiceStub = TestBed.inject(HeroService)
-      spyOn(heroServiceStub, 'getHero').and.returnValue(
-        of({
-          id: 13,
-          name: 'Bombasto',
-        }),
-      )
       fixture.detectChanges()
     })
-    it('Initialized with a hero and show context', () => {
+    it('Empty Hero', () => {
       const anyDiv = fixture.debugElement.query(By.css('div'))
       expect(anyDiv).toBeTruthy()
     })
-    it('Contains hero id', () => {
-      const div: HTMLDivElement = fixture.debugElement.query(By.css('div div')).nativeElement
-      expect(div.textContent).toContain('id: 13')
+    it('should check input label name', () => {
+      let queryByLabel = fixture.debugElement.query(By.css('label[for=id]'))
+      expect(queryByLabel).toBeTruthy()
+      expect(queryByLabel.nativeElement).toBeTruthy()
+      expect(queryByLabel.nativeElement.outerText).toContain('ID')
+    })
+    it('Set Input id', async () => {
+      const username = fixture.debugElement.query(By.css('#id'))
+      username.nativeElement.value = 13
+      username.nativeElement.dispatchEvent(new Event('input'))
+      fixture.detectChanges()
+      expect(username.nativeElement.value).toContain(13)
+    })
+    it('Set Input name', async () => {
+      const username = fixture.debugElement.query(By.css('#name'))
+      username.nativeElement.value = 'Bombasto'
+      username.nativeElement.dispatchEvent(new Event('input'))
+      fixture.detectChanges()
+      expect(username.nativeElement.value).toContain('Bombasto')
     })
   })
 })
