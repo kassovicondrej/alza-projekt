@@ -1,34 +1,20 @@
 <div class="flex flex-column justify-content-center mt-2">
-  <!--  <div class="card align-self-center">-->
-  <!--    <div class="card-title">Add new hero</div>-->
-
-  <!--    <div class="card-body">-->
-  <!--      <div class="form-group">-->
-  <!--        <label>Hero name</label>-->
-  <!--        <input [(ngModel)]="heroName" placeholder="Hero name" type="text" maxlength="30"/>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--    <div class="card-footer">-->
-  <!--      <button (click)="addHero()" class="btn btn-primary grow" type="button">-->
-  <!--        {{ "Add hero" | uppercase }}-->
-  <!--      </button>-->
-  <!--    </div>-->
-  <!--  </div>-->
 
   <div class="card align-self-center">
-    <button mat-raised-button (click)="openDialog()">Create Hero</button>
+    <button mat-raised-button (click)="openDialog()">{{'Create Hero' | uppercase}}</button>
   </div>
 
   <div class="flex flex-column align-self-center m-2">
     <div class="text-title mx-4">My heroes</div>
     <div class="flex flex-column">
-      <div *ngFor="let hero of heroes" class="hero-badge" >
-        <div class="hero-badge__id" [routerLink]="['/detail/', hero.id]">{{ hero.id }}</div>
-        <div class="hero-badge__name" [routerLink]="['/detail/', hero.id]">
-          <span [value]="hero.name" customText>{{ hero.name }}</span>
+      <div *ngFor="let hero of heroes" class="position-relative">
+        <div class="hero-badge" [routerLink]="['/detail/', hero.id]">
+          <div class="hero-badge__id">{{ hero.id }}</div>
+          <div class="hero-badge__name">
+            <span [value]="hero.name" customText>{{ hero.name }}</span>
+          </div>
         </div>
-          <span (click)="deleteHero($event, hero)" class="delete-icon">+</span>
+        <span (click)="deleteHero($event, hero)" class="delete-icon">+</span>
       </div>
     </div>
   </div>

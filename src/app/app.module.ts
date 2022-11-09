@@ -9,7 +9,7 @@ import { CustomTextDirective } from './core/directives/custom-text'
 import { HeroesListComponent } from './heroes-list/heroes-list.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreateUserModalComponent } from './core/components/create-user-modal/create-user-modal.component'
-import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
@@ -34,14 +34,14 @@ const materialModules = [
     ConfirmDialogComponent,
   ],
   imports: [
+    ...materialModules,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ...materialModules,
   ],
   exports: [...materialModules, ConfirmDialogComponent],
-  providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }],
+  providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [CreateUserModalComponent],

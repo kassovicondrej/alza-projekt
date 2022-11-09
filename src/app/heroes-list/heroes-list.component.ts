@@ -43,22 +43,21 @@ export class HeroesListComponent implements OnInit {
   }
 
   deleteHero(event: Event, hero: Hero): void {
-    event.preventDefault()
     const message = `Are you sure you want to do this?`
 
     const dialogData = new ConfirmDialogModel('Confirm Action', message)
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '400px',
-      enterAnimationDuration: '1000ms',
-      exitAnimationDuration: '1000ms',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
       data: dialogData,
     })
 
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
         this.heroService.deleteHero(hero.id)
-        this.snackBar.open('Hero with id ' + hero.id + ' was deleted', 'Undo', { duration: 3000 })
+        this.snackBar.open('Hero with id ' + hero.id + ' was deleted', '', { duration: 3000 })
       }
     })
   }
