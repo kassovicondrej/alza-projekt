@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <p>Add new hero</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Hero name</mat-label>
+    <input matInput [(ngModel)]="heroName" required>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="heroName" [disabled]="heroName.length < 1">Ok</button>
+</div>
